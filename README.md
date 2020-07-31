@@ -113,3 +113,14 @@ called anything you like, a good example could be `VM_MultiMachine` and place th
 
 ## Access VM, run server and connect to server in browser
 
+
+**Accessing the VM**
+
+To access the Virtual Machine you just created, use the command:
+
+```bash
+vagrant ssh <name_of_machine>
+```
+
+First of all we are going to enter the `app` machine with `vagrant ssh app` this should load us into the virtual machine.
+
