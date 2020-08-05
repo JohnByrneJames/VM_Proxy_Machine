@@ -45,7 +45,7 @@ If you already have the VM setup on your machine then skip to the next part [**B
 
 ### **Step 1** Download **Ruby** 
 
-Go to this website: [**Windows**](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.6.6-1/rubyinstaller-devkit-2.6.6-1-x64.exe)
+Download Ruby 2.6.6 here: [**Windows**](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.6.6-1/rubyinstaller-devkit-2.6.6-1-x64.exe)
 **|** [**Mac**](https://www.ruby-lang.org/en/downloads/)
 
 Follow the instructions on download, and when you are greeted by a Command line looking Ruby Interpreter screen make sure you select to install the third option.
