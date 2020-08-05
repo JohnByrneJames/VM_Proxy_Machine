@@ -15,7 +15,9 @@ website which will be listening on port `3000`.
 - [Explanation](#Explanation)
 - [Installation and Requirements](#Installation-and-Requirements)
 - [Booting up the Virtual Machines](#Booting-up-the-Virtual-Machines)
-- [Access VM, run server and connect to server in browser](#Access-VM,-run-server-and-connect-to-server-in-browser)
+- [Access VM](#Access-VM)
+- [Run Server](#Run-Server)
+- [Open Website in Browser](#Open-Website-in-Browser)
 
 ## Introduction
 This is a guide of how to install and run the VM for Sparta global, allowing you to access their app in the browser.
@@ -111,8 +113,45 @@ That is all for the requirements, it should all work now. Next we will see how t
 First of all make sure you have downloaded this Repo as a zip. Create a folder inside one of your directories
 called anything you like, a good example could be `VM_MultiMachine` and place that zip inside and unzip it.
 
-## Access VM, run server and connect to server in browser
+Once unzipped you should have the following files in your directory:
+* app
+* environment
+* tests
+* .gitignore
+* README.md
 
+That means you are ready to start creating your virtual machine using Vagrant! The first thing you need to do
+is open a **git bash** command line in **ADMINISTRATOR MODE** so that you have all privileges. Then navigate to the folder
+that has the files you just unzipped.
+
+**Tips**
+* To change drive simply do `cd /<driveletter/` to change onto that root.
+* To go back a directory do `cd ..` to go back a single directory
+
+Once you are inside the directory you unzipped the contents of this repo, type the following command:
+
+```bash
+vagrant up
+```
+
+This will automatically create a VM for both the app and the database. This may take a few minutes... depending on your
+chosen drives speed.
+
+All the dependencies and software should be pre-installed in the provisions that I have added into the `VagrantFile`.
+
+When it comes to a end, the two Oracle machines should be running, there are two ways to check this:
+
+1. Open the `oracle VM VirtualBox Manager` and you will see them both running
+2. Type `Vagrant status`
+
+**Perfect** Now you can move onto the next step...
+
+## Access VM
+
+**Important**
+
+If you are not interested in going into the Virtual Machine and just want to access it via the browser, simply skip to
+[**Open Website in browser**](#Open-Website-in-Browser)
 
 **Accessing the VM**
 
@@ -124,3 +163,43 @@ vagrant ssh <name_of_machine>
 
 First of all we are going to enter the `app` machine with `vagrant ssh app` this should load us into the virtual machine.
 
+## Run Server
+**Running the server**
+
+If you followed the last [step](#Access-VM) you should be inside your virtual machine where the app can be launched, everything has been
+taken care of in the background thanks to the provision. If you are interested in how it works then please go (**HERE**).
+
+The first thing to do is navigate to the app directory, you should be in the home directory now so to check use `ls`, you should see the
+app folder. To access the app and run the node app, follow these steps:
+
+```bash
+# Navigate into app directory
+cd app
+
+# ls to see what is in the directory
+ls
+
+# run the node application
+sudo node app.js
+
+>> app listening on port 3000 << Expected output 
+```
+
+If you have got this far and see the expected output then you are now ready to move onto the next step. The app should now be
+available to connect to on the browser.
+
+## Open Website in Browser
+
+The last step is to open a Browser of your choice. I prefer **FireFox**.
+
+Navigate to your URL, from here you can access parts of the **NGINX** server using the `development.local`.
+Here is a full list of the websites available.
+
+| URL                             | Description                                                                                                                                                                             |
+|---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| _Development.local_               | This is the home page of the app                                                                                                                                                        |
+| _Development.local/fibonacci/`number`_ | This page is of course related to the Fibonacci number sequence. Replace `number` with a digit and it will return the value of that Particular place in the Fibonacci sequence. E.G. /6 → 5  |
+| `Development.local/posts`         | This page connects to a database to display a list of posts.                                                                                                                            |
+
+If you would like to know how more about the server, database, proxy and other aspects of this application are set up in the back end,
+please refer to this page.
